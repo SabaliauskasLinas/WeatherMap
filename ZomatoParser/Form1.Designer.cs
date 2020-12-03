@@ -29,35 +29,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            this.listView = new System.Windows.Forms.ListView();
-            this.btnRestaurants = new System.Windows.Forms.Button();
             this.btnCuisines = new System.Windows.Forms.Button();
+            this.btnRestaurants = new System.Windows.Forms.Button();
             this.SuspendLayout();
-            // 
-            // listView
-            // 
-            this.listView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.listView.FullRowSelect = true;
-            this.listView.HideSelection = false;
-            this.listView.Location = new System.Drawing.Point(12, 12);
-            this.listView.Name = "listView";
-            this.listView.Size = new System.Drawing.Size(467, 306);
-            this.listView.TabIndex = 0;
-            this.listView.UseCompatibleStateImageBehavior = false;
-            this.listView.View = System.Windows.Forms.View.Details;
-            // 
-            // btnRestaurants
-            // 
-            this.btnRestaurants.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnRestaurants.Location = new System.Drawing.Point(664, 12);
-            this.btnRestaurants.Name = "btnRestaurants";
-            this.btnRestaurants.Size = new System.Drawing.Size(124, 36);
-            this.btnRestaurants.TabIndex = 1;
-            this.btnRestaurants.Text = "Restaurants";
-            this.btnRestaurants.UseVisualStyleBackColor = true;
-            this.btnRestaurants.Click += new System.EventHandler(this.btnRestaurants_Click);
             // 
             // btnCuisines
             // 
@@ -66,9 +40,20 @@
             this.btnCuisines.Name = "btnCuisines";
             this.btnCuisines.Size = new System.Drawing.Size(124, 36);
             this.btnCuisines.TabIndex = 2;
-            this.btnCuisines.Text = "Cuisines";
+            this.btnCuisines.Text = "blet 2";
             this.btnCuisines.UseVisualStyleBackColor = true;
             this.btnCuisines.Click += new System.EventHandler(this.btnCuisines_Click);
+            // 
+            // btnRestaurants
+            // 
+            this.btnRestaurants.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnRestaurants.Location = new System.Drawing.Point(664, 12);
+            this.btnRestaurants.Name = "btnRestaurants";
+            this.btnRestaurants.Size = new System.Drawing.Size(124, 36);
+            this.btnRestaurants.TabIndex = 1;
+            this.btnRestaurants.Text = "blet 1";
+            this.btnRestaurants.UseVisualStyleBackColor = true;
+            this.btnRestaurants.Click += new System.EventHandler(this.btnRestaurants_Click);
             // 
             // Form1
             // 
@@ -77,7 +62,6 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.btnCuisines);
             this.Controls.Add(this.btnRestaurants);
-            this.Controls.Add(this.listView);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.Text = "Zomato";
@@ -86,10 +70,8 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.ListView listView;
-        private System.Windows.Forms.Button btnRestaurants;
         private System.Windows.Forms.Button btnCuisines;
+        private System.Windows.Forms.Button btnRestaurants;
     }
 }
 

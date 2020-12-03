@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace Model.Entities
 {
-    public class NewTestEntity
+    public class ServerResult<T>
     {
-        public string Name { get; set; }
-        public int Age { get; set; }
-        public string Email { get; set; }
+        public bool Success { get; set; }
+        public string Message { get; set; }
+        public T Data { get; set; }
     }
 }
