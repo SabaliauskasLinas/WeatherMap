@@ -30,18 +30,5 @@ namespace Weather.Wpf.Views
         {
             return this;
         }
-
-        private void MyMap_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-            e.Handled = true;
-            Point mousePosition = e.GetPosition(this);
-            Location pinLocation = MyMap.ViewportPointToLocation(mousePosition);
-            Pushpin pin = new Pushpin
-            {
-                Location = pinLocation
-            };
-
-            MyMap.Children.Add(pin);
-        }
     }
 }

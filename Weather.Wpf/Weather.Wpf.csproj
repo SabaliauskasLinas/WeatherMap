@@ -34,6 +34,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>weather.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Caliburn.Micro, Version=3.2.0.0, Culture=neutral, PublicKeyToken=8e5891231f2ed21f, processorArchitecture=MSIL">
       <HintPath>..\packages\Caliburn.Micro.Core.3.2.0\lib\net45\Caliburn.Micro.dll</HintPath>
@@ -119,16 +122,85 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Model\Weather.Core.csproj">
+    <Page Include="Views\ShellView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Weather.Core\Weather.Core.csproj">
       <Project>{0ccd37cb-7931-4987-bfdb-e7563f121138}</Project>
       <Name>Weather.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Page Include="Views\ShellView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
+    <Resource Include="Resources\a01d.png" />
+    <Resource Include="Resources\a01n.png" />
+    <Resource Include="Resources\a02d.png" />
+    <Resource Include="Resources\a02n.png" />
+    <Resource Include="Resources\a03d.png" />
+    <Resource Include="Resources\a03n.png" />
+    <Resource Include="Resources\a04d.png" />
+    <Resource Include="Resources\a04n.png" />
+    <Resource Include="Resources\a05d.png" />
+    <Resource Include="Resources\a05n.png" />
+    <Resource Include="Resources\a06d.png" />
+    <Resource Include="Resources\a06n.png" />
+    <Resource Include="Resources\c01d.png" />
+    <Resource Include="Resources\c01n.png" />
+    <Resource Include="Resources\c02d.png" />
+    <Resource Include="Resources\c02n.png" />
+    <Resource Include="Resources\c03d.png" />
+    <Resource Include="Resources\c03n.png" />
+    <Resource Include="Resources\c04d.png" />
+    <Resource Include="Resources\c04n.png" />
+    <Resource Include="Resources\d01d.png" />
+    <Resource Include="Resources\d01n.png" />
+    <Resource Include="Resources\d02d.png" />
+    <Resource Include="Resources\d02n.png" />
+    <Resource Include="Resources\d03d.png" />
+    <Resource Include="Resources\d03n.png" />
+    <Resource Include="Resources\f01d.png" />
+    <Resource Include="Resources\f01n.png" />
+    <Resource Include="Resources\r01d.png" />
+    <Resource Include="Resources\r01n.png" />
+    <Resource Include="Resources\r02d.png" />
+    <Resource Include="Resources\r02n.png" />
+    <Resource Include="Resources\r03d.png" />
+    <Resource Include="Resources\r03n.png" />
+    <Resource Include="Resources\r04d.png" />
+    <Resource Include="Resources\r04n.png" />
+    <Resource Include="Resources\r05d.png" />
+    <Resource Include="Resources\r05n.png" />
+    <Resource Include="Resources\r06d.png" />
+    <Resource Include="Resources\r06n.png" />
+    <Resource Include="Resources\s01d.png" />
+    <Resource Include="Resources\s01n.png" />
+    <Resource Include="Resources\s02d.png" />
+    <Resource Include="Resources\s02n.png" />
+    <Resource Include="Resources\s03d.png" />
+    <Resource Include="Resources\s03n.png" />
+    <Resource Include="Resources\s04d.png" />
+    <Resource Include="Resources\s04n.png" />
+    <Resource Include="Resources\s05d.png" />
+    <Resource Include="Resources\s05n.png" />
+    <Resource Include="Resources\s06d.png" />
+    <Resource Include="Resources\s06n.png" />
+    <Resource Include="Resources\t01d.png" />
+    <Resource Include="Resources\t01n.png" />
+    <Resource Include="Resources\t02d.png" />
+    <Resource Include="Resources\t02n.png" />
+    <Resource Include="Resources\t03d.png" />
+    <Resource Include="Resources\t03n.png" />
+    <Resource Include="Resources\t04d.png" />
+    <Resource Include="Resources\t04n.png" />
+    <Resource Include="Resources\t05d.png" />
+    <Resource Include="Resources\t05n.png" />
+    <Resource Include="Resources\u00d.png" />
+    <Resource Include="Resources\u00n.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="weather.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

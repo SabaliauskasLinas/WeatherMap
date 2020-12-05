@@ -1,6 +1,6 @@
 ﻿using Caliburn.Micro;
-using Model.Repositories;
-using Model.Services;
+using Weather.Core.Repositories;
+using Weather.Core.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;

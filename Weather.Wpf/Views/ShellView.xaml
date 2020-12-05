@@ -7,7 +7,8 @@
         xmlns:m="clr-namespace:Microsoft.Maps.MapControl.WPF;assembly=Microsoft.Maps.MapControl.WPF"
         xmlns:cal="http://www.caliburnproject.org"
         mc:Ignorable="d" FontSize="15"
-        Title="ShellView" Height="400" Width="700" WindowStartupLocation="CenterScreen">
+        Title="Weather Map" Height="600" Width="900" WindowStartupLocation="CenterScreen">
+
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10*" />
@@ -34,9 +35,29 @@
                cal:Message.Attach="[Event MouseDoubleClick] = [Action MyMap_MouseDoubleClick($source, $eventArgs)]"
         />
 
-        <TextBlock Text="Temperature" Grid.Column="2" Grid.Row="1"/>
-        <TextBlock x:Name="Temperature" Grid.Column="3" Grid.Row="1"/>
+        <!-- Row 1 -->
+        <TextBlock x:Name="SkyDescription" Grid.Column="2" Grid.Row="1"/>
+        <Image x:Name="SkyImage" Grid.Column="3" Grid.Row="1"/>
 
+        <!-- Row 2 -->
+        <TextBlock Text="Latitude" Grid.Column="2" Grid.Row="2"/>
+        <TextBlock x:Name="Latitude" Grid.Column="3" Grid.Row="2"/>
+
+        <!-- Row 3 -->
+        <TextBlock Text="Longitude" Grid.Column="2" Grid.Row="3"/>
+        <TextBlock x:Name="Longitude" Grid.Column="3" Grid.Row="3"/>
+
+        <!-- Row 4 -->
+        <TextBlock Text="Sunrise" Grid.Column="2" Grid.Row="4"/>
+        <TextBlock x:Name="Sunrise" Grid.Column="3" Grid.Row="4"/>
+
+        <!-- Row 5 -->
+        <TextBlock Text="Sunset" Grid.Column="2" Grid.Row="5"/>
+        <TextBlock x:Name="Sunset" Grid.Column="3" Grid.Row="5"/>
+
+        <!-- Row 6 -->
+        <TextBlock Text="Temperature" Grid.Column="2" Grid.Row="6"/>
+        <TextBlock x:Name="Temperature" Grid.Column="3" Grid.Row="6"/>
         <!-- Row 1
         <TextBlock Text="{Binding Path=FullName, Mode=OneWay}" 
                    Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2"></TextBlock>
