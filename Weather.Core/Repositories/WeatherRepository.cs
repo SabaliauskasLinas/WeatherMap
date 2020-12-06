@@ -17,26 +17,38 @@ namespace Weather.Core.Repositories
 
         public ServerResult<WeatherDetails> GetWeather(WeatherArgs args)
         {
-            var url = $"{_host}?" +
-                $"&key={_key}" +
-                $"&lat={args.Latitude.ToString("0.00", System.Globalization.CultureInfo.InvariantCulture)}" +
-                $"&lon={args.Longitude.ToString("0.00", System.Globalization.CultureInfo.InvariantCulture)}";
-
-            var client = new RestClient(url)
+            try
             {
-                Timeout = -1
-            };
+                var url = $"{_host}?" +
+                    $"&key={_key}" +
+                    $"&lat={args.Latitude.ToString("0.00", System.Globalization.CultureInfo.InvariantCulture)}" +
+                    $"&lon={args.Longitude.ToString("0.00", System.Globalization.CultureInfo.InvariantCulture)}";
 
-            var request = new RestRequest(Method.GET);
-            IRestResponse response = client.Execute(request);
+                var client = new RestClient(url)
+                {
+                    Timeout = -1
+                };
 
-            if (!response.IsSuccessful)
-                return new ServerResult<WeatherDetails>() { Success = false, Message = response.ErrorMessage };
+                var request = new RestRequest(Method.GET);
+                IRestResponse response = client.Execute(request);
 
-            var content = JObject.Parse(response.Content);
-            JToken result = content["data"].Children().FirstOrDefault();
+                if (!response.IsSuccessful)
+                    return new ServerResult<WeatherDetails>() { Success = false, Message = response.ErrorMessage };
 
-            return new ServerResult<WeatherDetails>() { Success = true, Data = result.ToObject<WeatherDetails>() };
+                var content = JObject.Parse(response.Content);
+                JToken result = content["data"].Children().FirstOrDefault();
+
+                return new ServerResult<WeatherDetails>() { Success = true, Data = result.ToObject<WeatherDetails>() };
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return new ServerResult<WeatherDetails>()
+                {
+                    Success = false,
+                    Message = "Error while trying to fetch data",
+                };
+            }
         }
     }
 }

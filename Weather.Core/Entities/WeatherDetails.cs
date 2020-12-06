@@ -29,10 +29,13 @@ namespace Weather.Core.Entities
         public string CountryCode { get; set; }
 
         [JsonProperty("wind_spd")]
-        public string WindSpeed { get; set; }
+        public float WindSpeed { get; set; }
 
         [JsonProperty("temp")]
         public float Temperature { get; set; }
+
+        [JsonProperty("clouds")]
+        public int CloudCoverage { get; set; }
 
         [JsonProperty("weather")]
         public WeatherDescription Description { get; set; }
