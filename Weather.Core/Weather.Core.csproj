@@ -50,6 +50,7 @@
   <ItemGroup>
     <Compile Include="Entities\ServerResult.cs" />
     <Compile Include="Entities\WeatherArgs.cs" />
+    <Compile Include="Entities\WeatherAverages.cs" />
     <Compile Include="Entities\WeatherDescription.cs" />
     <Compile Include="Entities\WeatherDetails.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

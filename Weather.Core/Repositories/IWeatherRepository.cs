@@ -4,6 +4,6 @@ namespace Weather.Core.Repositories
 {
     public interface IWeatherRepository
     {
-        ServerResult<WeatherDetails> GetWeather(WeatherArgs args);
+        WeatherDetails GetWeather(WeatherArgs args);
     }
 }

@@ -3,7 +3,6 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Weather.Wpf.Views"
         xmlns:m="clr-namespace:Microsoft.Maps.MapControl.WPF;assembly=Microsoft.Maps.MapControl.WPF"
         xmlns:cal="http://www.caliburnproject.org"
         mc:Ignorable="d" FontSize="15"
@@ -17,7 +16,7 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10*" />
             <ColumnDefinition Width="10" />
-            <ColumnDefinition Width="1.5*" />
+            <ColumnDefinition Width="1.5*"  />
             <ColumnDefinition Width="2*" />
             <ColumnDefinition Width="10" />
         </Grid.ColumnDefinitions>
@@ -32,31 +31,39 @@
             <RowDefinition Height="auto" />
             <RowDefinition Height="auto" />
             <RowDefinition Height="auto" />
+            <RowDefinition Height="20" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
+        <Rectangle Grid.Column="1" Grid.ColumnSpan="4" Grid.RowSpan="20" Fill="#FFEEEEEE" />
 
         <m:Map x:Name="MyMap"
-               Grid.Row="0" Grid.Column="0" Grid.RowSpan="11" 
+               Grid.Row="0" Grid.Column="0" Grid.RowSpan="20" 
                CredentialsProvider="Arz9wywBC8jpWyDQVInWP7GZm5CMFfNYXdwMrgO0XptbISSFtIil-LAo7ODBiW-n"
                Center="55.900784, 21.8434069" ZoomLevel="12"
                cal:Message.Attach="[Event MouseDoubleClick] = [Action MyMap_MouseDoubleClick($source, $eventArgs)]"
+               BorderThickness="0, 0, 2, 0" BorderBrush="DarkGray"
         />
 
         <!-- Row 1 -->
-        <TextBlock x:Name="SkyDescription" Grid.Column="2" Grid.Row="1" VerticalAlignment="Center" TextWrapping="Wrap" FontWeight="Bold" FontSize="17"/>
+        <TextBlock x:Name="SkyDescription" Text="Double click on a map" Grid.Column="2" Grid.Row="1" 
+                   VerticalAlignment="Center" TextWrapping="Wrap" FontWeight="Bold" FontSize="17"/>
         <Image x:Name="SkyImage" Grid.Column="3" Grid.Row="1" HorizontalAlignment="Left"/>
 
         <!-- Row 2 -->
-        <TextBlock Text="Latitude" Grid.Column="2" Grid.Row="2" Visibility="{Binding DataLoaded, Converter={StaticResource BooleanToVisibilityConverter} }"/>
-        <TextBlock x:Name="Latitude" Grid.Column="3" Grid.Row="2" Visibility="{Binding DataLoaded, Converter={StaticResource BooleanToVisibilityConverter} }"/>
+        <TextBlock Text="Latitude" Grid.Column="2" Grid.Row="2" Visibility="{Binding DetailsLoaded, Converter={StaticResource BooleanToVisibilityConverter} }"/>
+        <TextBlock x:Name="Latitude" Grid.Column="3" Grid.Row="2" Visibility="{Binding DetailsLoaded, Converter={StaticResource BooleanToVisibilityConverter} }"/>
 
         <!-- Row 3 -->
-        <TextBlock Text="Longitude" Grid.Column="2" Grid.Row="3" Visibility="{Binding DataLoaded, Converter={StaticResource BooleanToVisibilityConverter} }"/>
-        <TextBlock x:Name="Longitude" Grid.Column="3" Grid.Row="3" Visibility="{Binding DataLoaded, Converter={StaticResource BooleanToVisibilityConverter} }"/>
+        <TextBlock Text="Longitude" Grid.Column="2" Grid.Row="3" Visibility="{Binding DetailsLoaded, Converter={StaticResource BooleanToVisibilityConverter} }"/>
+        <TextBlock x:Name="Longitude" Grid.Column="3" Grid.Row="3" Visibility="{Binding DetailsLoaded, Converter={StaticResource BooleanToVisibilityConverter} }"/>
 
         <!-- Row 4 -->
-        <TextBlock Text="Location" Grid.Column="2" Grid.Row="4" Visibility="{Binding DataLoaded, Converter={StaticResource BooleanToVisibilityConverter} }"/>
-        <TextBlock x:Name="Location" Grid.Column="3" Grid.Row="4" Visibility="{Binding DataLoaded, Converter={StaticResource BooleanToVisibilityConverter} }">
+        <TextBlock Text="Location" Grid.Column="2" Grid.Row="4" Visibility="{Binding DetailsLoaded, Converter={StaticResource BooleanToVisibilityConverter} }"/>
+        <TextBlock x:Name="Location" Grid.Column="3" Grid.Row="4" Visibility="{Binding DetailsLoaded, Converter={StaticResource BooleanToVisibilityConverter} }">
             <TextBlock.Text>
                 <MultiBinding StringFormat="{}{0}, {1}">
                     <Binding Path="CityName"/>
@@ -66,8 +73,8 @@
         </TextBlock>
 
         <!-- Row 5 -->
-        <TextBlock Text="Sunrise" Grid.Column="2" Grid.Row="5" Visibility="{Binding DataLoaded, Converter={StaticResource BooleanToVisibilityConverter} }"/>
-        <TextBlock Grid.Column="3" Grid.Row="5" Visibility="{Binding DataLoaded, Converter={StaticResource BooleanToVisibilityConverter} }">
+        <TextBlock Text="Sunrise" Grid.Column="2" Grid.Row="5" Visibility="{Binding DetailsLoaded, Converter={StaticResource BooleanToVisibilityConverter} }"/>
+        <TextBlock Grid.Column="3" Grid.Row="5" Visibility="{Binding DetailsLoaded, Converter={StaticResource BooleanToVisibilityConverter} }">
             <TextBlock.Text>
                 <MultiBinding StringFormat="{}{0:00}:{1:00} UTC">
                     <Binding Path="Sunrise.Hours" />
@@ -77,8 +84,8 @@
         </TextBlock>
 
         <!-- Row 6 -->
-        <TextBlock Text="Sunset" Grid.Column="2" Grid.Row="6" Visibility="{Binding DataLoaded, Converter={StaticResource BooleanToVisibilityConverter} }"/>
-        <TextBlock Grid.Column="3" Grid.Row="6" Visibility="{Binding DataLoaded, Converter={StaticResource BooleanToVisibilityConverter} }">
+        <TextBlock Text="Sunset" Grid.Column="2" Grid.Row="6" Visibility="{Binding DetailsLoaded, Converter={StaticResource BooleanToVisibilityConverter} }"/>
+        <TextBlock Grid.Column="3" Grid.Row="6" Visibility="{Binding DetailsLoaded, Converter={StaticResource BooleanToVisibilityConverter} }">
             <TextBlock.Text>
                 <MultiBinding StringFormat="{}{0:00}:{1:00} UTC">
                     <Binding Path="Sunset.Hours" />
@@ -88,15 +95,33 @@
         </TextBlock>
 
         <!-- Row 7 -->
-        <TextBlock Text="Temperature" Grid.Column="2" Grid.Row="7" Visibility="{Binding DataLoaded, Converter={StaticResource BooleanToVisibilityConverter} }"/>
-        <TextBlock Text="{Binding Temperature, StringFormat={}{0} °C}" Grid.Column="3" Grid.Row="7" Visibility="{Binding DataLoaded, Converter={StaticResource BooleanToVisibilityConverter} }"/>
+        <TextBlock Text="Temperature" Grid.Column="2" Grid.Row="7" Visibility="{Binding DetailsLoaded, Converter={StaticResource BooleanToVisibilityConverter} }"/>
+        <TextBlock Text="{Binding Temperature, StringFormat={}{0} °C}" Grid.Column="3" Grid.Row="7" Visibility="{Binding DetailsLoaded, Converter={StaticResource BooleanToVisibilityConverter} }"/>
 
         <!-- Row 8 -->
-        <TextBlock Text="Wind Speed" Grid.Column="2" Grid.Row="8" Visibility="{Binding DataLoaded, Converter={StaticResource BooleanToVisibilityConverter} }"/>
-        <TextBlock Text="{Binding WindSpeed, StringFormat={}{0:#0.0} m/s}" Grid.Column="3" Grid.Row="8" Visibility="{Binding DataLoaded, Converter={StaticResource BooleanToVisibilityConverter} }"/>
+        <TextBlock Text="Wind Speed" Grid.Column="2" Grid.Row="8" Visibility="{Binding DetailsLoaded, Converter={StaticResource BooleanToVisibilityConverter} }"/>
+        <TextBlock Text="{Binding WindSpeed, StringFormat={}{0:#0.0} m/s}" Grid.Column="3" Grid.Row="8" Visibility="{Binding DetailsLoaded, Converter={StaticResource BooleanToVisibilityConverter} }"/>
 
         <!-- Row 9 -->
-        <TextBlock Text="Clouds" Grid.Column="2" Grid.Row="9" Visibility="{Binding DataLoaded, Converter={StaticResource BooleanToVisibilityConverter} }"/>
-        <TextBlock Text="{Binding CloudCoverage, StringFormat={}{0} %}" Grid.Column="3" Grid.Row="9" Visibility="{Binding DataLoaded, Converter={StaticResource BooleanToVisibilityConverter} }"/>
+        <TextBlock Text="Clouds" Grid.Column="2" Grid.Row="9" Visibility="{Binding DetailsLoaded, Converter={StaticResource BooleanToVisibilityConverter} }"/>
+        <TextBlock Text="{Binding CloudCoverage, StringFormat={}{0} %}" Grid.Column="3" Grid.Row="9" Visibility="{Binding DetailsLoaded, Converter={StaticResource BooleanToVisibilityConverter} }"/>
+
+        <!-- Row 11 -->
+        <TextBlock x:Name="AveragesText" Text="Average from 2 clicks"
+                   Grid.Column="2" Grid.Row="11" Grid.ColumnSpan="2"
+                   FontWeight="Bold" FontSize="17"
+                   Visibility="{Binding AveragesLoaded, Converter={StaticResource BooleanToVisibilityConverter} }"
+        />
+
+        <!-- Row 12 -->
+        <TextBlock Text="Temperature" Grid.Column="2" Grid.Row="12" Visibility="{Binding AveragesLoaded, Converter={StaticResource BooleanToVisibilityConverter} }"/>
+        <TextBlock Text="{Binding TemperatureAverage, StringFormat={}{0:#0.0} °C}" Grid.Column="3" Grid.Row="12" Visibility="{Binding AveragesLoaded, Converter={StaticResource BooleanToVisibilityConverter} }"/>
+
+        <!-- Row 13 -->
+        <TextBlock Text="Wind Speed" Grid.Column="2" Grid.Row="13" Visibility="{Binding AveragesLoaded, Converter={StaticResource BooleanToVisibilityConverter} }"/>
+        <TextBlock Text="{Binding WindSpeedAverage, StringFormat={}{0:#0.0} m/s}" Grid.Column="3" Grid.Row="13" Visibility="{Binding AveragesLoaded, Converter={StaticResource BooleanToVisibilityConverter} }"/>
+
+        <!-- Row 14 -->
+        <Button x:Name="ResetAverages" Content="Reset" Grid.Column="2" Grid.Row="14" Visibility="{Binding AveragesLoaded, Converter={StaticResource BooleanToVisibilityConverter} }"/>
     </Grid>
 </Window>
