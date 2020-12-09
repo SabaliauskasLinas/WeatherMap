@@ -7,10 +7,11 @@ namespace Weather.Core.Services
     public class WeatherService : IWeatherService
     {
         private readonly IWeatherRepository _repository;
-        private string _errorMessage = "Error while trying to fetch data";
+        private readonly string _errorMessage = "Error while trying to fetch data";
         private int _clicksCount;
         private float _temperatureTotal;
         private float _windSpeedTotal;
+
         public WeatherService(IWeatherRepository repository)
         {
             _repository = repository;
@@ -20,6 +21,9 @@ namespace Weather.Core.Services
         {
             try
             {
+                if (args == null || args.Latitude == 0 || args.Longitude == 0)
+                    return new ServerResult<WeatherDetails> { Success = false, Message = _errorMessage };
+
                 var result = _repository.GetWeather(args);
                 if (result == null)
                     return new ServerResult<WeatherDetails> { Success = false, Message = _errorMessage };
@@ -45,8 +49,8 @@ namespace Weather.Core.Services
                 var averages = new WeatherAverages
                 {
                     ClicksCount = _clicksCount,
-                    Temperature = _temperatureTotal / _clicksCount,
-                    WindSpeed = _windSpeedTotal / _clicksCount,
+                    Temperature = _clicksCount != 0 ? _temperatureTotal / _clicksCount : 0,
+                    WindSpeed = _clicksCount != 0 ? _windSpeedTotal / _clicksCount : 0,
                 };
 
                 return new ServerResult<WeatherAverages> { Success = true, Data = averages };
@@ -70,7 +74,7 @@ namespace Weather.Core.Services
             _windSpeedTotal = 0;
         }
 
-        private void AddWeatherTotals(WeatherDetails details)
+        public void AddWeatherTotals(WeatherDetails details)
         {
             _clicksCount++;
             _temperatureTotal += details.Temperature;
